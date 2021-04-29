@@ -12,6 +12,7 @@ export const fetchAppDetails = ()=> new Promise(resolve=>{
 const getPageProps = routes => {
     return routes && routes.page
 };
+
 const getFirst = routes => {
     return routes[0]
 };
@@ -31,9 +32,20 @@ const flatRoutesProps = (routes=[])=>{
         })
     })
 }
+
 export const  transformRoutes = compose(
     flatRoutesProps,
     getPageProps,
     getFirst,
 )
+
+function omit(obj, ...props) {
+    const result = { ...obj };
+    props.forEach(function(prop) {
+      delete result[prop];
+    });
+    return result;
+}
+
+export const omitContent = route => omit(route,['content']);
 

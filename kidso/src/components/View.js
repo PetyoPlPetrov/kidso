@@ -1,7 +1,6 @@
 
 import {Helmet} from "react-helmet";
 
-
 function View({content,title,metaTitle,metaDescription}){
 
     return <>
