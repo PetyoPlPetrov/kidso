@@ -39,12 +39,14 @@ export const  transformRoutes = compose(
     getFirst,
 )
 
-function omit(obj, ...props) {
-    const result = { ...obj };
-    props.forEach(function(prop) {
-      delete result[prop];
-    });
-    return result;
+function omit(obj, props) {
+   
+    return Object.keys(obj)
+    .filter(e=> !props.includes(e))
+    .reduce((acc,curr)=>{
+        acc[curr]=obj[curr];
+        return acc
+    },{})
 }
 
 export const omitContent = route => omit(route,['content']);

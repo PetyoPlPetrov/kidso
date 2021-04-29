@@ -35,6 +35,12 @@ This repository will present an application with the following functionality:
         - README
         
 ```
+## Things to notice
+1. Routes are loaded with 2 seconds delay as to show the possibility for spinner
+2. Fn composition when it comes to the routes transformation delivered over React Context API
+3. The warnings are comming from react helmet and from using a h3 under Switch component
+4. Having had more time, I would have added proptypes.
+
 
 
 ## Authors
