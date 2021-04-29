@@ -3,28 +3,35 @@ import React,{useContext, useMemo} from 'react'
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Link
 } from "react-router-dom";
 
 import {RoutesContext} from '../hoc/routesContext'
-import View from './View'
+import Page from './View'
 import NoMatch from './NoMatch'
 
 function Main() {
 
   const routes = useContext(RoutesContext);
 
-  const appRoutes = useMemo(()=>routes.map(({url,content,title}) => (
+  const appRoutes = useMemo(()=>routes.map(({url,content,...props}) => (
     <Route key={url} exact path={url}>
-      <View  content={content} title={title}/>
+      <Page key={url} content={content} {...props}/>
     </Route>
   )),[routes]);
 
+  const appLinks = useMemo(()=>(
+    routes.map(route=><div key={route.url}><Link key={route.url} to={route.url}>{route.url}</Link></div> )
+  ),[routes])
+
   return (
     <Router>
-
         <Switch>
           {appRoutes}
+          <Route exact path='/'>
+          {appLinks}
+          </Route>
          <Route path="*">
             <NoMatch />
           </Route>

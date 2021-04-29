@@ -2,16 +2,14 @@
 import {Helmet} from "react-helmet";
 
 
-function View({content,title}){
+function View({content,title,metaTitle,metaDescription}){
 
     return <>
         <Helmet>
             <meta charSet="utf-8" />
-            <title>{title}</title>
-            <meta name="title" content="Helmet app title" />
-            <meta name="description" content="Helmet application desc" />
-
-            <link rel="canonical" href="http://mysite.com/example" />
+            <title> {title}</title>
+            <meta name="title" content={metaTitle} />
+            <meta name="description" content={metaDescription} />
         </Helmet>
         <div dangerouslySetInnerHTML={{__html: content}}>
         </div>
