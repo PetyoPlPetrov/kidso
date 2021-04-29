@@ -1,5 +1,5 @@
 
-import {RoutesProvider} from './hoc/withRoutes';
+import {RoutesProvider} from './hoc/RoutesProvider';
 import Main from './components/Main';
 
 function App() {

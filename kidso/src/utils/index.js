@@ -6,7 +6,7 @@ export const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args
 export const fetchAppDetails = ()=> new Promise(resolve=>{
     setTimeout(()=>{
         resolve(data)
-    })
+    },2000)
 })
 
 const getPageProps = routes => {

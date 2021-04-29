@@ -27,7 +27,7 @@ function Main() {
   return (
     <Router>
         <Switch>
-          {appRoutes}
+          {appRoutes.length>0 ?appRoutes : <h3>Loading...</h3>}
           <Route exact path='/'>
           {appLinks}
           </Route>

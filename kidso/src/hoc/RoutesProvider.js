@@ -23,7 +23,7 @@ const useFetchRoutes = (transform)=>{
 export const RoutesProvider = ({children})=> {
 
     const routes = useFetchRoutes(transformRoutes);
-    console.log(routes)
+    
     return  <RoutesContext.Provider value={routes}>
                    {children}
             </RoutesContext.Provider>
