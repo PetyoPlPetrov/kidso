@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { RoutesContext } from "../hoc/routesContext";
 import Page from "./View";
 import NoMatch from "./NoMatch";
+import Fibonaci from "./Fibonaci";
 
 function Main() {
   const routes = useContext(RoutesContext);
@@ -33,9 +34,17 @@ function Main() {
   return (
     <Router>
       <Switch>
-        {appRoutes.length > 0 ? appRoutes : <h3>Loading...</h3>}
+        {appRoutes}
         <Route exact path="/">
           {appLinks}
+        </Route>
+        <Route exact path='/fib'>
+          <Fibonaci >
+      
+            {(fibonaciNumbers)=>{
+                return fibonaciNumbers.map(number=> <div key={number}>{number + ', '}</div>)
+            }}
+          </Fibonaci>
         </Route>
         <Route path="*">
           <NoMatch />
