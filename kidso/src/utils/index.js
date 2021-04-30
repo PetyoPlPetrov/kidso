@@ -55,9 +55,9 @@ export function calculateFib([n, collection = []]) {
     return [memo[n], collection];
   }
 
-  const [a, colectionA] = calculateFib([n - 1, collection]);
+  const [a, colectionA] = calculateFib([n - 1, [0, 1, 1]]);
 
-  const [b, collectionB] = calculateFib([n - 2, collection]);
+  const [b, collectionB] = calculateFib([n - 2, []]);
 
   memo[n] = a + b;
 
@@ -75,13 +75,14 @@ const asyncFibonaci = async ([n, collection = []]) => {
   if (n <= 1) {
     return [1, collection];
   }
+
   if (memo[n]) {
     return [memo[n], collection];
   }
 
   const [a, colectionA] = await calculateASyncHelper(asyncFibonaci, [
     n - 1,
-    [],
+    [0, 1, 1],
   ]);
 
   const [b, collectionB] = await calculateASyncHelper(asyncFibonaci, [
@@ -97,7 +98,7 @@ const asyncFibonaci = async ([n, collection = []]) => {
 export const calculateFibonaci = (n) => {
   memo = {};
   if (n > 5) {
-    return asyncFibonaci([n, []]);
+    return asyncFibonaci([n, [0, 1, 1]]);
   }
 
   return calculateASyncHelper(calculateFib, [n, []]);
