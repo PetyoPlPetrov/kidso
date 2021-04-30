@@ -1,13 +1,12 @@
-
-import {RoutesProvider} from './hoc/RoutesProvider';
-import Main from './components/Main';
+import { RoutesProvider } from "./hoc/RoutesProvider";
+import Main from "./components/Main";
 
 function App() {
   return (
     <RoutesProvider>
-          <Main/>
+      <Main />
     </RoutesProvider>
   );
 }
 
-export default (App);
+export default App;
