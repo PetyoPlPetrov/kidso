@@ -38,11 +38,12 @@ function Main() {
         <Route exact path="/">
           {appLinks}
         </Route>
-        <Route exact path='/fib'>
-          <Fibonaci >
-      
-            {(fibonaciNumbers)=>{
-                return fibonaciNumbers.map(number=> <div key={number}>{number + ', '}</div>)
+        <Route exact path="/fib">
+          <Fibonaci>
+            {(fibonaciNumbers) => {
+              return fibonaciNumbers.map((number) => (
+                <div key={number}>{number + ", "}</div>
+              ));
             }}
           </Fibonaci>
         </Route>

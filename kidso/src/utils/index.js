@@ -46,64 +46,62 @@ function omit(obj, props) {
 
 export const omitContent = (route) => omit(route, ["content"]);
 
-let memo = {}
+let memo = {};
 
-export function calculateFib([n, collection=[]]){
+export function calculateFib([n, collection = []]) {
+  if (n <= 1) return [1, collection];
 
-  if(n<=1) return [1, collection]
-
-  if(memo[n]){
-    return [memo[n], collection]
+  if (memo[n]) {
+    return [memo[n], collection];
   }
 
-  const [a, colectionA] = calculateFib([n-1, collection]);
+  const [a, colectionA] = calculateFib([n - 1, collection]);
 
-  const [b, collectionB] = calculateFib([n-2, collection]);
+  const [b, collectionB] = calculateFib([n - 2, collection]);
 
-  memo[n]= a+b
+  memo[n] = a + b;
 
-
-  return [a+b, [...colectionA,...collectionB,a+b]]
+  return [a + b, [...colectionA, ...collectionB, a + b]];
 }
 
-const calculateASyncHelper = (fn, ...args)=> new Promise(res=>{
+const calculateASyncHelper = (fn, ...args) =>
+  new Promise((res) => {
+    setTimeout(() => {
+      res(fn(...args));
+    });
+  });
 
-  setTimeout(()=>{
-    res(fn(...args))
-  })
-});
-
-const asyncFibonaci = async([n, collection=[]])=>{
-
-  if(n<=1){
-
-    return [1, collection]
+const asyncFibonaci = async ([n, collection = []]) => {
+  if (n <= 1) {
+    return [1, collection];
   }
-  if(memo[n]){
-    return [memo[n], collection]
+  if (memo[n]) {
+    return [memo[n], collection];
   }
 
-  
-  const [a, colectionA]=await calculateASyncHelper(asyncFibonaci, [n-1,[]]) ;
+  const [a, colectionA] = await calculateASyncHelper(asyncFibonaci, [
+    n - 1,
+    [],
+  ]);
 
-  const [b, collectionB] =await calculateASyncHelper(asyncFibonaci, [n-2,[]])
+  const [b, collectionB] = await calculateASyncHelper(asyncFibonaci, [
+    n - 2,
+    [],
+  ]);
 
-  memo[n]= a+b
+  memo[n] = a + b;
 
-  return [a+b, [...colectionA,...collectionB,a+b]]
+  return [a + b, [...colectionA, ...collectionB, a + b]];
+};
 
-}
+export const calculateFibonaci = (n) => {
+  memo = {};
+  if (n > 5) {
+    return asyncFibonaci([n, []]);
+  }
 
-export const calculateFibonaci = (n)=>{
-  memo= {}
-  if(n>5){
-
-    return asyncFibonaci([n,[]])
-  };
-
-  return calculateASyncHelper(calculateFib,[n,[]])
-
-}
+  return calculateASyncHelper(calculateFib, [n, []]);
+};
 
 // export const calculateFibonaci = (n)=>{
 //   const fibNumbers = []
