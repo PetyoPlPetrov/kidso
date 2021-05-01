@@ -98,10 +98,10 @@ const asyncFibonaci = async ([n, collection = []]) => {
 export const calculateFibonaci = (n) => {
   memo = {};
   if (n > 5) {
-    return asyncFibonaci([n, [0, 1, 1]]);
+    return asyncFibonaci([n]);
   }
 
-  return calculateASyncHelper(calculateFib, [n, []]);
+  return calculateASyncHelper(calculateFib, [n]);
 };
 
 // export const calculateFibonaci = (n)=>{

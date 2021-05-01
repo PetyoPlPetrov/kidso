@@ -41,8 +41,8 @@ function Main() {
         <Route exact path="/fib">
           <Fibonaci>
             {(fibonaciNumbers) => {
-              return fibonaciNumbers.map((number) => (
-                <div key={number}>{number + ", "}</div>
+              return fibonaciNumbers.map((number, i) => (
+                <div key={i}>{number}</div>
               ));
             }}
           </Fibonaci>

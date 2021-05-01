@@ -9,7 +9,7 @@ function Fibonaci({ calculateFib = calculate, children }) {
     calculateFib(number).then((fibonaciNumbers) => {
       console.log(fibonaciNumbers);
 
-      setFibNumbers(fibonaciNumbers);
+      setFibNumbers(fibonaciNumbers[1]);
     });
   }, [calculateFib, number]);
 
